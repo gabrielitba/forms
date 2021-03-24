@@ -1,4 +1,6 @@
-import { useState, FormEvent } from 'react';
+import { useState, useCallback, FormEvent } from 'react';
+import { toast } from 'react-toastify';
+
 import './styles.css';
 
 // Inputs Mask
@@ -59,30 +61,44 @@ const Form = () => {
     setCellPhoneValue(cellPhoneMask(value));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
 
-    const formValues = {
-      name: nameValue,
-      cpf: cpfWithoutSpecialCharacters(cpfValue),
-      rg: rgWithoutSpecialCharacters(rgValue),
-      cnpj: cnpjWithoutSpecialCharacters(cnpjValue),
-      date: birthdateToBackEnd(dateValue),
-      phone: phoneAndCellPhoneToBackend(phoneValue),
-      cellphone: phoneAndCellPhoneToBackend(cellPhoneValue),
-      email: emailValue,
-      admin: isAdmin,
-      developer: typeDev,
-      technology: typeTech,
-      comments: commentsValue,
-    };
+      const formValues = {
+        name: nameValue,
+        cpf: cpfWithoutSpecialCharacters(cpfValue),
+        rg: rgWithoutSpecialCharacters(rgValue),
+        cnpj: cnpjWithoutSpecialCharacters(cnpjValue),
+        date: birthdateToBackEnd(dateValue),
+        phone: phoneAndCellPhoneToBackend(phoneValue),
+        cellphone: phoneAndCellPhoneToBackend(cellPhoneValue),
+        email: emailValue,
+        admin: isAdmin,
+        developer: typeDev,
+        technology: typeTech,
+        comments: commentsValue,
+      };
 
-    Object.values(formValues).forEach((value) => {
-      if (value === '') {
-        alert('EPA MEU FI');
-      }
-    });
-  };
+      Object.values(formValues).every((value) => value !== '')
+        ? toast.success('Formulário preenchido com sucesso')
+        : toast.error('Por favor, verifique se os campos estão preenchidos!');
+    },
+    [
+      cellPhoneValue,
+      cnpjValue,
+      commentsValue,
+      cpfValue,
+      dateValue,
+      emailValue,
+      isAdmin,
+      nameValue,
+      phoneValue,
+      rgValue,
+      typeDev,
+      typeTech,
+    ]
+  );
 
   return (
     <form onSubmit={handleSubmit}>

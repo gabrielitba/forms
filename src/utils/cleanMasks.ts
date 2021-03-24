@@ -10,10 +10,14 @@ export const rgWithoutSpecialCharacters = (rg: string): string => {
 
 // Datas
 export const birthdateToBackEnd = (birthdate: string): string => {
-  // return moment(new Date(birthdate)).format('YYYY-MM-DD');
-  const dateSplit = birthdate.split('/');
-  // return `${dateSplit[2]}-${dateSplit[1]}-${dateSplit[0]}`;
-  return `${dateSplit[0]}-${dateSplit[1]}-${dateSplit[2]}`;
+  if (birthdate !== '') {
+    // return moment(new Date(birthdate)).format('YYYY-MM-DD');
+    const dateSplit = birthdate.split('/');
+    // return `${dateSplit[2]}-${dateSplit[1]}-${dateSplit[0]}`;
+    return `${dateSplit[0]}-${dateSplit[1]}-${dateSplit[2]}`;
+  } else {
+    return '';
+  }
 };
 
 // Telefone e celular
