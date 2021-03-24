@@ -55,5 +55,16 @@ input[type='radio' i] {
 
 button {
   width: 250px;
+
   cursor: pointer;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+button:hover {
+  filter: brightness(0.9);
 }

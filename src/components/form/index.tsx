@@ -1,23 +1,128 @@
 import { useState, FormEvent } from 'react';
 import './styles.css';
 
-function Form() {
+// Inputs Mask
+import {
+  cpfMask,
+  rgMask,
+  cnpjMask,
+  dateMask,
+  phoneMask,
+  cellPhoneMask,
+} from '../../utils/setMasks';
+
+// Inputs Mask remove
+import { cpfWithoutSpecialCharacters } from '../../utils/cleanMasks';
+
+const Form = () => {
+  // Form States
+  const [nameValue, setNameValue] = useState('');
+  const [cpfValue, setCpfValue] = useState('');
+  const [rgValue, setRgValue] = useState('');
+  const [cnpjValue, setCnpjValue] = useState('');
+  const [dateValue, setDateValue] = useState('');
+  const [phoneValue, setPhoneValue] = useState('');
+  const [cellPhoneValue, setCellPhoneValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+
+  // Mask Functions
+  const changeCpf = (value: string) => {
+    setCpfValue(cpfMask(value));
+  };
+  const changeRg = (value: string) => {
+    setRgValue(rgMask(value));
+  };
+  const changeCnpj = (value: string) => {
+    setCnpjValue(cnpjMask(value));
+  };
+  const changeDate = (value: string) => {
+    setDateValue(dateMask(value));
+  };
+  const changePhone = (value: string) => {
+    setPhoneValue(phoneMask(value));
+  };
+  const changeCellPhone = (value: string) => {
+    setCellPhoneValue(cellPhoneMask(value));
+  };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(event);
+    const formValues = {
+      nameValue,
+      cpfValue,
+      rgValue,
+      cnpjValue,
+      dateValue,
+      phoneValue,
+      cellPhoneValue,
+      emailValue,
+    };
+
+    console.log(formValues);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       {/* Inputs  Text*/}
-      <input type='text' name='cpf' placeholder='CPF' />
-      <input type='text' name='rg' placeholder='RG' />
-      <input type='text' name='cnpj' placeholder='CNPJ' />
-      <input type='text' name='date' placeholder='Date' />
-      <input type='text' name='phone' placeholder='Telefone' />
-      <input type='text' name='cellphone' placeholder='Celular' />
-      <input type='text' name='email' placeholder='E-mail' />
+      <input
+        type='text'
+        name='name'
+        placeholder='Nome'
+        value={nameValue}
+        onChange={(event) => setNameValue(event.target.value)}
+      />
+      <input
+        type='text'
+        name='cpf'
+        placeholder='CPF'
+        value={cpfValue}
+        onChange={(event) => changeCpf(event.target.value)}
+      />
+      <input
+        type='text'
+        name='rg'
+        placeholder='RG'
+        value={rgValue}
+        onChange={(event) => changeRg(event.target.value)}
+      />
+      <input
+        type='text'
+        name='cnpj'
+        placeholder='CNPJ'
+        maxLength={20}
+        value={cnpjValue}
+        onChange={(event) => changeCnpj(event.target.value)}
+      />
+      <input
+        type='text'
+        name='date'
+        maxLength={10}
+        placeholder='Date'
+        value={dateValue}
+        onChange={(event) => changeDate(event.target.value)}
+      />
+      <input
+        type='text'
+        name='phone'
+        placeholder='Telefone'
+        value={phoneValue}
+        onChange={(event) => changePhone(event.target.value)}
+      />
+      <input
+        type='text'
+        name='cellphone'
+        placeholder='Celular'
+        value={cellPhoneValue}
+        onChange={(event) => changeCellPhone(event.target.value)}
+      />
+      <input
+        type='email'
+        name='email'
+        placeholder='E-mail'
+        value={emailValue}
+        onChange={(event) => setEmailValue(event.target.value)}
+      />
 
       {/* Inputs Checked */}
       <label htmlFor='vendedor'>
@@ -51,6 +156,6 @@ function Form() {
       <button type='submit'>Enviar</button>
     </form>
   );
-}
+};
 
 export default Form;
