@@ -31,6 +31,14 @@ const Form = () => {
   const [cellPhoneValue, setCellPhoneValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const [typeDev, setTypeDev] = useState('');
+
+  const [typeTech, setTypeTech] = useState('');
+
+  const [commentsValue, setCommentsValue] = useState('');
+
   // Mask Functions
   const changeCpf = (value: string) => {
     setCpfValue(cpfMask(value));
@@ -63,6 +71,8 @@ const Form = () => {
       phone: phoneAndCellPhoneToBackend(phoneValue),
       cellphone: phoneAndCellPhoneToBackend(cellPhoneValue),
       email: emailValue,
+      admin: isAdmin,
+      developer: typeDev,
     };
 
     console.log(formValues);
@@ -131,32 +141,57 @@ const Form = () => {
       />
 
       {/* Inputs Checked */}
-      <label htmlFor='vendedor'>
-        Vendedor
-        <input type='checkbox' name='vendedor' id='' />
+      <label htmlFor='admin'>
+        Administrador
+        <input
+          type='checkbox'
+          name='admin'
+          id=''
+          checked={isAdmin}
+          onChange={(event) => setIsAdmin(event.target.checked)}
+        />
       </label>
 
       {/* Input Radio */}
       <div className='radios'>
         <label>
-          <input type='radio' value='cafe' name='drink' />
-          Café
+          <input
+            type='radio'
+            name='developer'
+            value='backend'
+            onChange={(event) => setTypeDev(event.target.value)}
+          />
+          Backend
         </label>
         <label>
-          <input type='radio' value='cha' name='drink' />
-          Chá
+          <input
+            type='radio'
+            name='developer'
+            value='frontend'
+            onChange={(event) => setTypeDev(event.target.value)}
+          />
+          Frontend
         </label>
       </div>
 
       {/* Select */}
-      <select name='language'>
+      <select
+        name='language'
+        value={typeTech}
+        onChange={(event) => setTypeTech(event.target.value)}
+      >
+        <option value='' />
         <option value='javascript'>JavaScript</option>
         <option value='php'>PHP</option>
         <option value='ruby'>Ruby</option>
       </select>
 
       {/* Textarea  */}
-      <textarea name='bio'></textarea>
+      <textarea
+        name='comments'
+        value={commentsValue}
+        onChange={(event) => setCommentsValue(event.target.value)}
+      />
 
       {/* Button Submit  */}
       <button type='submit'>Enviar</button>
