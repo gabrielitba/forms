@@ -1,5 +1,6 @@
 import { useState, useCallback, FormEvent } from 'react';
 import { toast } from 'react-toastify';
+import LoadingSpinner from '../loading';
 
 import './styles.css';
 
@@ -41,6 +42,9 @@ const Form = () => {
 
   const [commentsValue, setCommentsValue] = useState('');
 
+  //Loading button
+  const [isLoading, setIsLoading] = useState(false);
+
   // Mask Functions
   const changeCpf = (value: string) => {
     setCpfValue(cpfMask(value));
@@ -65,6 +69,8 @@ const Form = () => {
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
+      setIsLoading(true);
+
       const formValues = {
         name: nameValue,
         cpf: cpfWithoutMask(cpfValue),
@@ -80,9 +86,12 @@ const Form = () => {
         comments: commentsValue,
       };
 
-      Object.values(formValues).every((value) => value !== '')
-        ? toast.success('Formulário preenchido com sucesso')
-        : toast.error('Por favor, verifique se os campos estão preenchidos!');
+      setTimeout(() => {
+        setIsLoading(false);
+        Object.values(formValues).every((value) => value !== '')
+          ? toast.success('Formulário preenchido com sucesso')
+          : toast.error('Por favor, verifique se os campos estão preenchidos!');
+      }, 1000);
     },
     [
       cellPhoneValue,
@@ -216,7 +225,7 @@ const Form = () => {
       />
 
       {/* Button Submit  */}
-      <button type='submit'>Enviar</button>
+      <button type='submit'>{isLoading ? <LoadingSpinner /> : 'ENVIAR'}</button>
     </form>
   );
 };

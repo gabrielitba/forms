@@ -48,8 +48,8 @@ label {
 }
 
 input[type='checkbox' i] {
-  width: 30px;
-  margin-top: -5px;
+  width: 20px;
+  margin-top: -8px;
 }
 
 input[type='radio' i] {
@@ -59,6 +59,7 @@ input[type='radio' i] {
 
 button {
   width: 250px;
+  height: 57px;
 
   cursor: pointer;
   border: none;
@@ -66,7 +67,7 @@ button {
   color: #fff;
   margin: 0 0 5px;
   padding: 10px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 button:hover {
