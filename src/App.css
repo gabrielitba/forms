@@ -1,0 +1,9 @@
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin-top: 200px;
+}
