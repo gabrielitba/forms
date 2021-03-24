@@ -12,7 +12,13 @@ import {
 } from '../../utils/setMasks';
 
 // Inputs Mask remove
-import { cpfWithoutSpecialCharacters } from '../../utils/cleanMasks';
+import {
+  cpfWithoutSpecialCharacters,
+  rgWithoutSpecialCharacters,
+  cnpjWithoutSpecialCharacters,
+  birthdateToBackEnd,
+  phoneAndCellPhoneToBackend,
+} from '../../utils/cleanMasks';
 
 const Form = () => {
   // Form States
@@ -49,14 +55,14 @@ const Form = () => {
     event.preventDefault();
 
     const formValues = {
-      nameValue,
-      cpfValue,
-      rgValue,
-      cnpjValue,
-      dateValue,
-      phoneValue,
-      cellPhoneValue,
-      emailValue,
+      name: nameValue,
+      cpf: cpfWithoutSpecialCharacters(cpfValue),
+      rg: rgWithoutSpecialCharacters(rgValue),
+      cnpj: cnpjWithoutSpecialCharacters(cnpjValue),
+      date: birthdateToBackEnd(dateValue),
+      phone: phoneAndCellPhoneToBackend(phoneValue),
+      cellphone: phoneAndCellPhoneToBackend(cellPhoneValue),
+      email: emailValue,
     };
 
     console.log(formValues);
