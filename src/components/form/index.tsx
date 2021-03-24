@@ -73,9 +73,15 @@ const Form = () => {
       email: emailValue,
       admin: isAdmin,
       developer: typeDev,
+      technology: typeTech,
+      comments: commentsValue,
     };
 
-    console.log(formValues);
+    Object.values(formValues).forEach((value) => {
+      if (value === '') {
+        alert('EPA MEU FI');
+      }
+    });
   };
 
   return (
@@ -180,7 +186,7 @@ const Form = () => {
         value={typeTech}
         onChange={(event) => setTypeTech(event.target.value)}
       >
-        <option value='' />
+        <option value=''>Selecione uma linguagem</option>
         <option value='javascript'>JavaScript</option>
         <option value='php'>PHP</option>
         <option value='ruby'>Ruby</option>
