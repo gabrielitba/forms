@@ -1,7 +1,7 @@
 import './App.css';
 
 function App() {
-  return <div></div>;
+  return <h1>Opa</h1>;
 }
 
 export default App;
