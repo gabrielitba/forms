@@ -1,15 +1,20 @@
 // CPF
-export const cpfWithoutSpecialCharacters = (cpf: string): string => {
+export const cpfWithoutMask = (cpf: string): string => {
   return cpf.replace(/\./g, '').replace(/-/g, '');
 };
 
 // RG
-export const rgWithoutSpecialCharacters = (rg: string): string => {
+export const rgWithoutMask = (rg: string): string => {
   return rg.replace(/\./g, '').replace(/-/g, '');
 };
 
+// CNPJ
+export const cnpjWithoutMask = (cnpj: string): string => {
+  return cnpj.replace(/\./g, '').replace(/\//g, '').replace(/-/g, '');
+};
+
 // Datas
-export const birthdateToBackEnd = (birthdate: string): string => {
+export const dateWithoutMask = (birthdate: string): string => {
   if (birthdate !== '') {
     // return moment(new Date(birthdate)).format('YYYY-MM-DD');
     const dateSplit = birthdate.split('/');
@@ -21,15 +26,10 @@ export const birthdateToBackEnd = (birthdate: string): string => {
 };
 
 // Telefone e celular
-export const phoneAndCellPhoneToBackend = (phone: string): string => {
+export const phoneWithoutMask = (phone: string): string => {
   return phone
     .replace(/\(/g, '')
     .replace(/\)/g, '')
     .replace(/-/g, '')
     .replace(' ', '');
-};
-
-// CNPJ
-export const cnpjWithoutSpecialCharacters = (cnpj: string): string => {
-  return cnpj.replace(/\./g, '').replace(/\//g, '').replace(/-/g, '');
 };

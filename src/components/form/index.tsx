@@ -15,12 +15,12 @@ import {
 
 // Inputs Mask remove
 import {
-  cpfWithoutSpecialCharacters,
-  rgWithoutSpecialCharacters,
-  cnpjWithoutSpecialCharacters,
-  birthdateToBackEnd,
-  phoneAndCellPhoneToBackend,
-} from '../../utils/cleanMasks';
+  cpfWithoutMask,
+  rgWithoutMask,
+  cnpjWithoutMask,
+  dateWithoutMask,
+  phoneWithoutMask,
+} from '../../utils/clearMasks';
 
 const Form = () => {
   // Form States
@@ -67,12 +67,12 @@ const Form = () => {
 
       const formValues = {
         name: nameValue,
-        cpf: cpfWithoutSpecialCharacters(cpfValue),
-        rg: rgWithoutSpecialCharacters(rgValue),
-        cnpj: cnpjWithoutSpecialCharacters(cnpjValue),
-        date: birthdateToBackEnd(dateValue),
-        phone: phoneAndCellPhoneToBackend(phoneValue),
-        cellphone: phoneAndCellPhoneToBackend(cellPhoneValue),
+        cpf: cpfWithoutMask(cpfValue),
+        rg: rgWithoutMask(rgValue),
+        cnpj: cnpjWithoutMask(cnpjValue),
+        date: dateWithoutMask(dateValue),
+        phone: phoneWithoutMask(phoneValue),
+        cellphone: phoneWithoutMask(cellPhoneValue),
         email: emailValue,
         admin: isAdmin,
         developer: typeDev,
