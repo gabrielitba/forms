@@ -1,0 +1,59 @@
+body {
+  max-width: 100vw;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 60px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+input,
+select,
+textarea,
+.radios,
+.checks {
+  font-weight: bold;
+  width: 250px;
+  margin: 0 35px 20px;
+  height: 35px;
+  padding: 6px 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background: #f6f7f9;
+  color: #748194;
+  font-size: 14px;
+}
+
+.radios {
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+label {
+  display: flex;
+  margin-bottom: -20px;
+}
+
+input[type='checkbox' i] {
+  width: 30px;
+  margin-top: -5px;
+}
+
+input[type='radio' i] {
+  width: 20px;
+  margin: -10px 10px 10px 0;
+}
+
+button {
+  width: 250px;
+  cursor: pointer;
+}

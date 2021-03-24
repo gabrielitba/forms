@@ -1,7 +1,8 @@
 import './App.css';
+import Form from './components/form';
 
 function App() {
-  return <h1>Opa</h1>;
+  return <Form />;
 }
 
 export default App;
