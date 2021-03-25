@@ -17,10 +17,10 @@ import {
 
 // Remove Mask
 import {
-  cpfWithoutMask,
-  rgWithoutMask,
-  cnpjWithoutMask,
-  phoneWithoutMask,
+  cpfRemoveMask,
+  rgRemoveMask,
+  cnpjRemoveMask,
+  phoneRemoveMask,
 } from '../../utils/removeMasks';
 
 const Form = () => {
@@ -71,15 +71,15 @@ const Form = () => {
 
       setIsLoading(true);
 
-      // Data without masks
+      // Data Remove masks
       const formValues = {
         name: nameValue,
-        cpf: cpfWithoutMask(cpfValue),
-        rg: rgWithoutMask(rgValue),
-        cnpj: cnpjWithoutMask(cnpjValue),
+        cpf: cpfRemoveMask(cpfValue),
+        rg: rgRemoveMask(rgValue),
+        cnpj: cnpjRemoveMask(cnpjValue),
         date: dateValue,
-        phone: phoneWithoutMask(phoneValue),
-        cellphone: phoneWithoutMask(cellPhoneValue),
+        phone: phoneRemoveMask(phoneValue),
+        cellphone: phoneRemoveMask(cellPhoneValue),
         email: emailValue,
         admin: isAdmin,
         developer: typeDev,
