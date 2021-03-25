@@ -1,10 +1,11 @@
 import { useState, useCallback, FormEvent } from 'react';
 import { toast } from 'react-toastify';
+
 import LoadingSpinner from '../loading';
 
 import './styles.css';
 
-// Inputs Mask
+// Set Mask
 import {
   cpfMask,
   rgMask,
@@ -14,13 +15,13 @@ import {
   cellPhoneMask,
 } from '../../utils/setMasks';
 
-// Inputs Mask remove
+// Remove Mask
 import {
   cpfWithoutMask,
   rgWithoutMask,
   cnpjWithoutMask,
   phoneWithoutMask,
-} from '../../utils/clearMasks';
+} from '../../utils/removeMasks';
 
 const Form = () => {
   // Form States
@@ -70,6 +71,7 @@ const Form = () => {
 
       setIsLoading(true);
 
+      // Data without masks
       const formValues = {
         name: nameValue,
         cpf: cpfWithoutMask(cpfValue),
