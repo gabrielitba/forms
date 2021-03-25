@@ -19,7 +19,6 @@ import {
   cpfWithoutMask,
   rgWithoutMask,
   cnpjWithoutMask,
-  dateWithoutMask,
   phoneWithoutMask,
 } from '../../utils/clearMasks';
 
@@ -76,7 +75,7 @@ const Form = () => {
         cpf: cpfWithoutMask(cpfValue),
         rg: rgWithoutMask(rgValue),
         cnpj: cnpjWithoutMask(cnpjValue),
-        date: dateWithoutMask(dateValue),
+        date: dateValue,
         phone: phoneWithoutMask(phoneValue),
         cellphone: phoneWithoutMask(cellPhoneValue),
         email: emailValue,
@@ -91,7 +90,9 @@ const Form = () => {
         Object.values(formValues).every((value) => value !== '')
           ? toast.success('Formulário preenchido com sucesso')
           : toast.error('Por favor, verifique se os campos estão preenchidos!');
-      }, 1000);
+
+        console.log(formValues);
+      }, 500);
     },
     [
       cellPhoneValue,
@@ -207,14 +208,14 @@ const Form = () => {
 
       {/* Select */}
       <select
-        name='language'
+        name='turno'
         value={typeTech}
         onChange={(event) => setTypeTech(event.target.value)}
       >
-        <option value=''>Selecione uma linguagem</option>
-        <option value='javascript'>JavaScript</option>
-        <option value='php'>PHP</option>
-        <option value='ruby'>Ruby</option>
+        <option value=''>Selecione uma opção</option>
+        <option value='manhã'>Manhã</option>
+        <option value='tarde'>Tarde</option>
+        <option value='noite'>Noite</option>
       </select>
 
       {/* Textarea  */}
