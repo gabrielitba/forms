@@ -91,7 +91,9 @@ const Form = () => {
         setIsLoading(false);
         Object.values(formValues).every((value) => value !== '')
           ? toast.success('Formulário preenchido com sucesso')
-          : toast.error('Por favor, verifique se os campos estão preenchidos!');
+          : toast.error(
+              'Por favor, verifique se todos os campos estão preenchidos!'
+            );
 
         console.log(formValues);
       }, 500);
@@ -120,7 +122,11 @@ const Form = () => {
         name='name'
         placeholder='Nome'
         value={nameValue}
-        onChange={(event) => setNameValue(event.target.value)}
+        onChange={(event) => {
+          setNameValue(event.target.value);
+          event.target.style.border =
+            event.target.value === '' ? '1px solid red' : 'none';
+        }}
       />
       <input
         type='text'
