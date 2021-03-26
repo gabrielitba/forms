@@ -34,7 +34,7 @@ const Form = () => {
   const [cellPhoneValue, setCellPhoneValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
 
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isDev, setIsDev] = useState(false);
 
   const [typeDev, setTypeDev] = useState('');
 
@@ -81,7 +81,7 @@ const Form = () => {
         phone: phoneRemoveMask(phoneValue),
         cellphone: phoneRemoveMask(cellPhoneValue),
         email: emailValue,
-        admin: isAdmin,
+        admin: isDev,
         developer: typeDev,
         technology: typeTech,
         comments: commentsValue,
@@ -105,7 +105,7 @@ const Form = () => {
       cpfValue,
       dateValue,
       emailValue,
-      isAdmin,
+      isDev,
       nameValue,
       phoneValue,
       rgValue,
@@ -225,14 +225,14 @@ const Form = () => {
       />
 
       {/* Inputs Checked */}
-      <label htmlFor='admin'>
-        Administrador
+      <label htmlFor='isdev'>
+        Você é desenvolvedor?
         <input
           type='checkbox'
-          name='admin'
-          id=''
-          checked={isAdmin}
-          onChange={(event) => setIsAdmin(event.target.checked)}
+          name='isdev'
+          id='isdev'
+          checked={isDev}
+          onChange={(event) => setIsDev(event.target.checked)}
         />
       </label>
 
@@ -243,6 +243,7 @@ const Form = () => {
             type='radio'
             name='developer'
             value='backend'
+            disabled={!isDev ?? false}
             onChange={(event) => setTypeDev(event.target.value)}
           />
           Backend
@@ -252,6 +253,7 @@ const Form = () => {
             type='radio'
             name='developer'
             value='frontend'
+            disabled={!isDev ?? false}
             onChange={(event) => setTypeDev(event.target.value)}
           />
           Frontend
