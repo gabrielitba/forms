@@ -8,7 +8,6 @@ import './styles.css';
 import {
   cpfMask,
   rgMask,
-  cnpjMask,
   dateMask,
   phoneMask,
   cellPhoneMask,
@@ -17,7 +16,6 @@ import {
 import {
   cpfRemoveMask,
   rgRemoveMask,
-  cnpjRemoveMask,
   phoneRemoveMask,
 } from '../../utils/removeMasks';
 
@@ -26,7 +24,6 @@ const Form = () => {
   const [nameValue, setNameValue] = useState('');
   const [cpfValue, setCpfValue] = useState('');
   const [rgValue, setRgValue] = useState('');
-  const [cnpjValue, setCnpjValue] = useState('');
   const [dateValue, setDateValue] = useState('');
   const [phoneValue, setPhoneValue] = useState('');
   const [cellPhoneValue, setCellPhoneValue] = useState('');
@@ -50,9 +47,6 @@ const Form = () => {
   const changeRg = (value: string) => {
     setRgValue(rgMask(value));
   };
-  const changeCnpj = (value: string) => {
-    setCnpjValue(cnpjMask(value));
-  };
   const changeDate = (value: string) => {
     setDateValue(dateMask(value));
   };
@@ -74,7 +68,6 @@ const Form = () => {
         name: nameValue,
         cpf: cpfRemoveMask(cpfValue),
         rg: rgRemoveMask(rgValue),
-        cnpj: cnpjRemoveMask(cnpjValue),
         date: dateValue,
         phone: phoneRemoveMask(phoneValue),
         cellphone: phoneRemoveMask(cellPhoneValue),
@@ -101,7 +94,6 @@ const Form = () => {
     },
     [
       cellPhoneValue,
-      cnpjValue,
       commentsValue,
       cpfValue,
       dateValue,
@@ -153,20 +145,6 @@ const Form = () => {
           changeRg(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 12
-              ? '1px solid red'
-              : 'none';
-        }}
-      />
-      <input
-        type='text'
-        name='cnpj'
-        placeholder='CNPJ'
-        maxLength={20}
-        value={cnpjValue}
-        onChange={(event) => {
-          changeCnpj(event.target.value);
-          event.target.style.border =
-            event.target.value === '' || event.target.value.length < 20
               ? '1px solid red'
               : 'none';
         }}

@@ -16,16 +16,6 @@ export const rgMask = (value: string): string => {
     .replace(/(-\d{1})\d+?$/, '$1');
 };
 
-export const cnpjMask = (value: string): string => {
-  return value
-    .replace(/[^\d]/g, '')
-    .replace(/(\d{2})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d{1,2})/, '$1/$2')
-    .replace(/(\d{4})(\d{1,2})/, '$1-$2')
-    .replace(/(-\d{2)\d+?$/, '$1');
-};
-
 export const ieMask = (value: string): string => {
   return value
     .replace(/[^\d]/g, '')
