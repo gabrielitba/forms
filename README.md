@@ -4,7 +4,7 @@
 
 ## 🙋‍♂ Apresentação:
 
-Apenas um exemplo de como trabalhar com formulários em React. O formulário possui mascara de inputs, validação dos campos, tratamento dos dados no submit, e notificação para erro ou sucesso.
+Apenas um exemplo de como trabalhar com formulários em React. O formulário possui mascara de inputs, validação dos campos, tratamento dos dados no submit, notificação para erro ou sucesso, e exibição de loading.
 
 &nbsp;
 
@@ -31,6 +31,8 @@ Mascara de inputs;
 Tratamento dos dados no submit;
 
 validação do formulário;
+
+Exibição loading no submit;
 
 Notificações.
 
