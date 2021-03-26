@@ -5,7 +5,6 @@ import LoadingSpinner from '../loading';
 
 import './styles.css';
 
-// Set Mask
 import {
   cpfMask,
   rgMask,
@@ -15,7 +14,6 @@ import {
   cellPhoneMask,
 } from '../../utils/setMasks';
 
-// Remove Mask
 import {
   cpfRemoveMask,
   rgRemoveMask,
@@ -42,10 +40,10 @@ const Form = () => {
 
   const [commentsValue, setCommentsValue] = useState('');
 
-  //Loading button
-  const [isLoading, setIsLoading] = useState(false);
+  // Loading Button State
+  const [isLoadingButton, setLoadingButton] = useState(false);
 
-  // Mask Functions
+  // Funções para adicionar mascaras
   const changeCpf = (value: string) => {
     setCpfValue(cpfMask(value));
   };
@@ -69,9 +67,9 @@ const Form = () => {
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      setIsLoading(true);
+      setLoadingButton(true);
 
-      // Data Remove masks
+      // Remover mascaras ao criar objeto
       const formValues = {
         name: nameValue,
         cpf: cpfRemoveMask(cpfValue),
@@ -87,8 +85,11 @@ const Form = () => {
         comments: commentsValue,
       };
 
+      // Simular carregamento
       setTimeout(() => {
-        setIsLoading(false);
+        setLoadingButton(false);
+
+        // Checar campos vazios
         Object.values(formValues).every((value) => value !== '')
           ? toast.success('Formulário preenchido com sucesso')
           : toast.error(
@@ -284,7 +285,9 @@ const Form = () => {
       />
 
       {/* Button Submit  */}
-      <button type='submit'>{isLoading ? <LoadingSpinner /> : 'ENVIAR'}</button>
+      <button type='submit'>
+        {isLoadingButton ? <LoadingSpinner /> : 'ENVIAR'}
+      </button>
     </form>
   );
 };
