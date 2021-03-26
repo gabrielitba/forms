@@ -125,7 +125,9 @@ const Form = () => {
         onChange={(event) => {
           setNameValue(event.target.value);
           event.target.style.border =
-            event.target.value === '' ? '1px solid red' : 'none';
+            event.target.value === '' || event.target.value.length < 15
+              ? '1px solid red'
+              : 'none';
         }}
       />
       <input
@@ -133,14 +135,26 @@ const Form = () => {
         name='cpf'
         placeholder='CPF'
         value={cpfValue}
-        onChange={(event) => changeCpf(event.target.value)}
+        onChange={(event) => {
+          changeCpf(event.target.value);
+          event.target.style.border =
+            event.target.value === '' || event.target.value.length < 14
+              ? '1px solid red'
+              : 'none';
+        }}
       />
       <input
         type='text'
         name='rg'
         placeholder='RG'
         value={rgValue}
-        onChange={(event) => changeRg(event.target.value)}
+        onChange={(event) => {
+          changeRg(event.target.value);
+          event.target.style.border =
+            event.target.value === '' || event.target.value.length < 12
+              ? '1px solid red'
+              : 'none';
+        }}
       />
       <input
         type='text'
@@ -148,36 +162,66 @@ const Form = () => {
         placeholder='CNPJ'
         maxLength={20}
         value={cnpjValue}
-        onChange={(event) => changeCnpj(event.target.value)}
+        onChange={(event) => {
+          changeCnpj(event.target.value);
+          event.target.style.border =
+            event.target.value === '' || event.target.value.length < 20
+              ? '1px solid red'
+              : 'none';
+        }}
       />
       <input
         type='text'
         name='date'
         maxLength={10}
-        placeholder='Date'
+        placeholder='Data'
         value={dateValue}
-        onChange={(event) => changeDate(event.target.value)}
+        onChange={(event) => {
+          changeDate(event.target.value);
+          event.target.style.border =
+            event.target.value === '' || event.target.value.length < 10
+              ? '1px solid red'
+              : 'none';
+        }}
       />
       <input
         type='text'
         name='phone'
         placeholder='Telefone'
         value={phoneValue}
-        onChange={(event) => changePhone(event.target.value)}
+        onChange={(event) => {
+          changePhone(event.target.value);
+          event.target.style.border =
+            event.target.value === '' || event.target.value.length < 14
+              ? '1px solid red'
+              : 'none';
+        }}
       />
       <input
         type='text'
         name='cellphone'
         placeholder='Celular'
         value={cellPhoneValue}
-        onChange={(event) => changeCellPhone(event.target.value)}
+        onChange={(event) => {
+          changeCellPhone(event.target.value);
+          event.target.style.border =
+            event.target.value === '' || event.target.value.length < 15
+              ? '1px solid red'
+              : 'none';
+        }}
       />
       <input
         type='email'
         name='email'
         placeholder='E-mail'
         value={emailValue}
-        onChange={(event) => setEmailValue(event.target.value)}
+        onChange={(event) => {
+          setEmailValue(event.target.value);
+          event.target.style.border =
+            event.target.value === '' || !event.target.value.includes('@')
+              ? '1px solid red'
+              : 'none';
+        }}
       />
 
       {/* Inputs Checked */}
@@ -230,7 +274,11 @@ const Form = () => {
       <textarea
         name='comments'
         value={commentsValue}
-        onChange={(event) => setCommentsValue(event.target.value)}
+        onChange={(event) => {
+          setCommentsValue(event.target.value);
+          event.target.style.border =
+            event.target.value === '' ? '1px solid red' : 'none';
+        }}
       />
 
       {/* Button Submit  */}
