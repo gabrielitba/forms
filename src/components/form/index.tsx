@@ -33,7 +33,7 @@ const Form = () => {
 
   const [typeDev, setTypeDev] = useState('');
 
-  const [typeTech, setTypeTech] = useState('');
+  const [typeTurn, setTypeTurn] = useState('');
 
   const [commentsValue, setCommentsValue] = useState('');
 
@@ -74,7 +74,7 @@ const Form = () => {
         email: emailValue,
         admin: isDev,
         developer: isDev ? typeDev : 'Non-developer',
-        technology: typeTech,
+        turn: typeTurn,
         comments: commentsValue,
       };
 
@@ -103,7 +103,7 @@ const Form = () => {
       phoneValue,
       rgValue,
       typeDev,
-      typeTech,
+      typeTurn,
     ]
   );
 
@@ -119,7 +119,7 @@ const Form = () => {
           setNameValue(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 15
-              ? '1px solid #FF0000'
+              ? '2px solid #FF0000'
               : 'none';
         }}
       />
@@ -132,7 +132,7 @@ const Form = () => {
           changeCpf(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 14
-              ? '1px solid #FF0000'
+              ? '2px solid #FF0000'
               : 'none';
         }}
       />
@@ -145,7 +145,7 @@ const Form = () => {
           changeRg(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 12
-              ? '1px solid #FF0000'
+              ? '2px solid #FF0000'
               : 'none';
         }}
       />
@@ -159,7 +159,7 @@ const Form = () => {
           changeDate(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 10
-              ? '1px solid #FF0000'
+              ? '2px solid #FF0000'
               : 'none';
         }}
       />
@@ -172,7 +172,7 @@ const Form = () => {
           changePhone(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 14
-              ? '1px solid #FF0000'
+              ? '2px solid #FF0000'
               : 'none';
         }}
       />
@@ -185,7 +185,7 @@ const Form = () => {
           changeCellPhone(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 15
-              ? '1px solid #FF0000'
+              ? '2px solid #FF0000'
               : 'none';
         }}
       />
@@ -198,7 +198,7 @@ const Form = () => {
           setEmailValue(event.target.value);
           event.target.style.border =
             event.target.value === '' || !event.target.value.includes('@')
-              ? '1px solid #FF0000'
+              ? '2px solid #FF0000'
               : 'none';
         }}
       />
@@ -218,25 +218,28 @@ const Form = () => {
       {/* Input Radio */}
       <div
         style={{
-          border: isDev && typeDev === '' ? '1px solid #FF0000' : 'none',
+          border: isDev && typeDev === '' ? '2px solid #FF0000' : 'none',
+          cursor: isDev ? 'default' : 'not-allowed',
         }}
         className='radios'
       >
-        <label>
+        <label style={{ cursor: isDev ? 'default' : 'not-allowed' }}>
           <input
             type='radio'
             name='developer'
             value='backend'
+            style={{ cursor: isDev ? 'default' : 'not-allowed' }}
             disabled={!isDev ?? false}
             onChange={(event) => setTypeDev(event.target.value)}
           />
           Backend
         </label>
-        <label>
+        <label style={{ cursor: isDev ? 'default' : 'not-allowed' }}>
           <input
             type='radio'
             name='developer'
             value='frontend'
+            style={{ cursor: isDev ? 'default' : 'not-allowed' }}
             disabled={!isDev ?? false}
             onChange={(event) => setTypeDev(event.target.value)}
           />
@@ -247,11 +250,11 @@ const Form = () => {
       {/* Select */}
       <select
         name='turno'
-        value={typeTech}
+        value={typeTurn}
         onChange={(event) => {
-          setTypeTech(event.target.value);
+          setTypeTurn(event.target.value);
           event.target.style.border =
-            event.target.value === '' ? '1px solid #FF0000' : 'none';
+            event.target.value === '' ? '2px solid #FF0000' : 'none';
         }}
       >
         <option value=''>Selecione uma opção</option>
@@ -264,10 +267,11 @@ const Form = () => {
       <textarea
         name='comments'
         value={commentsValue}
+        placeholder='Descreva pelo menos três qualidades suas...'
         onChange={(event) => {
           setCommentsValue(event.target.value);
           event.target.style.border =
-            event.target.value === '' ? '1px solid #FF0000' : 'none';
+            event.target.value === '' ? '2px solid #FF0000' : 'none';
         }}
       />
 
