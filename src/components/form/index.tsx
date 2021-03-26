@@ -73,7 +73,7 @@ const Form = () => {
         cellphone: phoneRemoveMask(cellPhoneValue),
         email: emailValue,
         admin: isDev,
-        developer: typeDev,
+        developer: isDev ? typeDev : 'Non-developer',
         technology: typeTech,
         comments: commentsValue,
       };
@@ -90,7 +90,7 @@ const Form = () => {
             );
 
         console.log(formValues);
-      }, 500);
+      }, 1000);
     },
     [
       cellPhoneValue,
@@ -119,7 +119,7 @@ const Form = () => {
           setNameValue(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 15
-              ? '1px solid red'
+              ? '1px solid #FF0000'
               : 'none';
         }}
       />
@@ -132,7 +132,7 @@ const Form = () => {
           changeCpf(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 14
-              ? '1px solid red'
+              ? '1px solid #FF0000'
               : 'none';
         }}
       />
@@ -145,7 +145,7 @@ const Form = () => {
           changeRg(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 12
-              ? '1px solid red'
+              ? '1px solid #FF0000'
               : 'none';
         }}
       />
@@ -159,7 +159,7 @@ const Form = () => {
           changeDate(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 10
-              ? '1px solid red'
+              ? '1px solid #FF0000'
               : 'none';
         }}
       />
@@ -172,7 +172,7 @@ const Form = () => {
           changePhone(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 14
-              ? '1px solid red'
+              ? '1px solid #FF0000'
               : 'none';
         }}
       />
@@ -185,7 +185,7 @@ const Form = () => {
           changeCellPhone(event.target.value);
           event.target.style.border =
             event.target.value === '' || event.target.value.length < 15
-              ? '1px solid red'
+              ? '1px solid #FF0000'
               : 'none';
         }}
       />
@@ -198,7 +198,7 @@ const Form = () => {
           setEmailValue(event.target.value);
           event.target.style.border =
             event.target.value === '' || !event.target.value.includes('@')
-              ? '1px solid red'
+              ? '1px solid #FF0000'
               : 'none';
         }}
       />
@@ -223,7 +223,12 @@ const Form = () => {
       </label>
 
       {/* Input Radio */}
-      <div className='radios'>
+      <div
+        style={{
+          border: isDev && typeDev === '' ? '1px solid #FF0000' : 'none',
+        }}
+        className='radios'
+      >
         <label>
           <input
             type='radio'
@@ -250,7 +255,11 @@ const Form = () => {
       <select
         name='turno'
         value={typeTech}
-        onChange={(event) => setTypeTech(event.target.value)}
+        onChange={(event) => {
+          setTypeTech(event.target.value);
+          event.target.style.border =
+            event.target.value === '' ? '1px solid #FF0000' : 'none';
+        }}
       >
         <option value=''>Selecione uma opção</option>
         <option value='manhã'>Manhã</option>
@@ -265,7 +274,7 @@ const Form = () => {
         onChange={(event) => {
           setCommentsValue(event.target.value);
           event.target.style.border =
-            event.target.value === '' ? '1px solid red' : 'none';
+            event.target.value === '' ? '1px solid #FF0000' : 'none';
         }}
       />
 
