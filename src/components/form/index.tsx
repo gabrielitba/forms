@@ -204,7 +204,14 @@ const Form = () => {
       />
 
       {/* Inputs Checked */}
-      <label htmlFor='isdev'>
+      <label
+        style={{
+          fontWeight: 'bold',
+          color: '#748194',
+          margin: '-5px 0 -15px 35px',
+        }}
+        htmlFor='isdev'
+      >
         Você é desenvolvedor?
         <input
           type='checkbox'

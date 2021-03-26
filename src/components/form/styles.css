@@ -47,12 +47,13 @@ label {
   margin-bottom: -20px;
 }
 
-input[type='checkbox' i] {
+input[type='checkbox'] {
   width: 20px;
   margin-top: -8px;
+  margin-left: 75px;
 }
 
-input[type='radio' i] {
+input[type='radio'] {
   width: 20px;
   margin: -10px 10px 10px 0;
 }
