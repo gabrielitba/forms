@@ -48,6 +48,12 @@ label {
   margin-bottom: -20px;
 }
 
+.labelChecked {
+  font-weight: bold;
+  color: #748194;
+  margin: -5px 0 -15px 35px;
+}
+
 input[type='checkbox'] {
   width: 20px;
   margin-top: -8px;
