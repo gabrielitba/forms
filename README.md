@@ -4,7 +4,7 @@
 
 ## 🙋‍♂ Apresentação:
 
-Apenas um exemplo de como trabalhar com formulários em React. O formulário possui mascara de inputs, validação dos campos, tratamento dos dados no submit, notificação para erro ou sucesso, e exibição de loading.
+Uma forma de como trabalhar com formulários em React com controlled components. O formulário possui mascara de inputs, validação dos campos, tratamento dos dados no submit, notificação para erro ou sucesso, e exibição de loading.
 
 &nbsp;
 
